@@ -1,5 +1,5 @@
 require 'ripple/translation'
-require 'riak/cluster'
+# require 'riak/cluster'
 require 'pp'
 
 namespace :riak do
