@@ -12,13 +12,14 @@ module Ripple
 
       # @return [Riak::Bucket] The bucket assigned to this class.
       def bucket
-        Ripple.client.bucket(bucket_name)
+        @bucket ||= Ripple.client.bucket(bucket_name)
       end
 
       # Set the bucket name for this class and its subclasses.
       # @param [String] value the new bucket name
       def bucket_name=(value)
         (class << self; self; end).send(:define_method, :bucket_name){ value }
+        @bucket = nil
       end
     end
   end
